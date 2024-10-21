@@ -17,7 +17,7 @@ export class EntityComponent {
     
   }
   navigatePage(arg0: number) {
-    this.router.navigate([`/page${arg0}`],{skipLocationChange:true});
+    this.router.navigate([`page${arg0}`],{relativeTo:this.activateRoute});
   }
   navigateBack(){
     this.router.navigate(['']);
