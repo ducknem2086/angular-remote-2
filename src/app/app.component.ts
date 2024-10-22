@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-remote-2';
+  title = 'angular-remote-21231231skjdhfgjkshdf';
 }
