@@ -71,6 +71,8 @@
   - afterViewChecked
   - onDestroy
 
-#Debounce - throttle:
-  -debounce:
-      
+# Debounce - throttle:
+- debounce:
+  - Chỉ chạy hàm sau khi sự kiện dừng trong một khoảng thời gian nhất định.
+  - Nếu trong thời gian chờ mà sự kiện lại tiếp tục xảy ra, reset lại thời gian chờ.
+- throttle: trong bao nhiêu giây thì chỉ có 1 request được thực hiện -> đùng cho scroll 
