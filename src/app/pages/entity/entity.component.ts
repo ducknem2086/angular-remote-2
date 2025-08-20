@@ -4,13 +4,11 @@ import { ActivatedRoute, provideRouter, Route, Router, RouterModule, RouterOutle
 import { ENTITY_ROUTE } from './entity.routing';
 
 @Component({
-  selector: 'app-entity',
-  standalone: true,
-  imports: [RouterOutlet, 
-
-  ],
-  templateUrl: './entity.component.html',
-  styleUrl: './entity.component.css'
+    selector: 'app-entity',
+    imports: [RouterOutlet,
+    ],
+    templateUrl: './entity.component.html',
+    styleUrl: './entity.component.css'
 })
 export class EntityComponent {
   constructor(public router:Router,public activateRoute:ActivatedRoute)  {
