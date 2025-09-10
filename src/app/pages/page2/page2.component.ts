@@ -1,22 +1,34 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, importProvidersFrom, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 
 @Component({
-    selector: 'app-page2',
-    imports: [],
-    templateUrl: './page2.component.html',
-    styleUrl: './page2.component.css',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-page2',
+  imports: [],
+  standalone: true,
+  templateUrl: './page2.component.html',
+  styleUrl: './page2.component.css',
 })
 export class Page2Component {
-  changeDetector= inject(ChangeDetectorRef);
+  changeDetector = inject(ChangeDetectorRef);
   countNumber = 0;
+  countNumberSignal = signal<number>(0);
+
   constructor() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.countNumber++;
-      // this.changeDetector.detectChanges()
-    },1500)
+      /**
+       * chỗ này do bản chất bỏ zone đi (zoneless) thì sẽ không chạy cd
+       * cho các hàm interval và timeout (bất đồng bộ) nên muốn nó chạy cd
+       * lại thì cần phải cần cờ yêu cầu chạy lại cd thêm lần nữa.
+       * nên là chỗ này có thể dùng lại cờ markForCheck() để chạy cd
+       * thay vì dùng detectChange() để cd force cho chính nó và các
+       * thằng dom/ component  phụ thuộc
+       */
+      this.countNumberSignal.update(x => x++)
+      this.changeDetector.markForCheck();
+    }, 1500)
   }
-  updateCount(){
+
+  updateCount() {
     this.countNumber++;
   }
 }

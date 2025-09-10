@@ -8,12 +8,13 @@ module.exports = withModuleFederationPlugin({
 
   exposes: {
     "./EntityRoute": "./src/app/pages/entity/entity.routing.ts",
+    "./Page2Component": "./src/app/pages/page2/page2.component.ts",
   },
 
   shared: {
     ...shareAll({
       singleton: true,
-      strictVersion: true,
+      strictVersion: false,
       requiredVersion: "auto",
     }),
   },
