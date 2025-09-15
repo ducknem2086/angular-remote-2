@@ -1,23 +1,23 @@
-import { routes } from './../../app.routes';
-import { Component, importProvidersFrom } from '@angular/core';
-import { ActivatedRoute, provideRouter, Route, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { ENTITY_ROUTE } from './entity.routing';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-entity',
-    imports: [RouterOutlet,
-    ],
-    templateUrl: './entity.component.html',
-    styleUrl: './entity.component.css'
+  selector: 'app-entity',
+  imports: [RouterOutlet],
+  templateUrl: './entity.component.html',
+  styleUrl: './entity.component.css',
+  standalone: true,
 })
 export class EntityComponent {
-  constructor(public router:Router,public activateRoute:ActivatedRoute)  {
-    
+  constructor(public router: Router, public activateRoute: ActivatedRoute) {
+
   }
+
   navigatePage(arg0: number) {
-    this.router.navigate([`page${arg0}`],{relativeTo:this.activateRoute});
+    this.router.navigate([`page${ arg0 }`], {relativeTo: this.activateRoute});
   }
-  navigateBack(){
+
+  navigateBack() {
     this.router.navigate(['']);
   }
 }

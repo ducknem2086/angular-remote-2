@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Injector, signal } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page2',
@@ -12,7 +14,7 @@ export class Page2Component {
   countNumber = 0;
   countNumberSignal = signal<number>(0);
 
-  constructor() {
+  constructor(injector: Injector, public router: Router) {
     setTimeout(() => {
       this.countNumber++;
       /**
@@ -26,9 +28,20 @@ export class Page2Component {
       this.countNumberSignal.update(x => x++)
       this.changeDetector.markForCheck();
     }, 1500)
+
+
+    const PopupElement = createCustomElement(Page2Component, {injector});
+    // Register the custom element with the browser.
+    if (!customElements.get('popup-element')) {
+      customElements.define('popup-element', PopupElement);
+    }
   }
 
   updateCount() {
     this.countNumber++;
+  }
+
+  routerBack() {
+    this.router.navigateByUrl('/').then()
   }
 }

@@ -15,7 +15,7 @@ export const ENTITY_ROUTE: Routes = [
       },
       {
         path: 'page2',
-        component: Page2Component,
+        component: Page2Component
       },
       {
         path: 'page3',
