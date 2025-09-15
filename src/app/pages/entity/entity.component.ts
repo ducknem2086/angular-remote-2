@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,12 +9,23 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
   standalone: true,
 })
 export class EntityComponent {
-  constructor(public router: Router, public activateRoute: ActivatedRoute) {
+  listBtn = signal([{
+    text: 'Page Config',
+    href: '/page-config',
+  }, {
+    text: 'Test CD',
+    href: '/test-change-detection',
+  }, {
+    text: 'test-form',
+    href: '/test-form',
+  }])
 
+  constructor(public router: Router, public activateRoute: ActivatedRoute) {
   }
 
-  navigatePage(arg0: number) {
-    this.router.navigate([`page${ arg0 }`], {relativeTo: this.activateRoute});
+
+  navigatePage(href: string) {
+    this.router.navigate([href], {relativeTo: this.activateRoute});
   }
 
   navigateBack() {

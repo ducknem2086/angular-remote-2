@@ -30,11 +30,11 @@ export class Page2Component {
     }, 1500)
 
 
-    const PopupElement = createCustomElement(Page2Component, {injector});
-    // Register the custom element with the browser.
-    if (!customElements.get('popup-element')) {
-      customElements.define('popup-element', PopupElement);
-    }
+    // const PopupElement = createCustomElement(Page2Component, {injector});
+    // // Register the custom element with the browser.
+    // if (!customElements.get('popup-element')) {
+    //   customElements.define('popup-element', PopupElement);
+    // }
   }
 
   updateCount() {

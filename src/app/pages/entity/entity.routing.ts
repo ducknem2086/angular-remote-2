@@ -10,15 +10,15 @@ export const ENTITY_ROUTE: Routes = [
     component: EntityComponent,
     children: [
       {
-        path: 'page1',
+        path: 'page-config',
         component: Page1Component,
       },
       {
-        path: 'page2',
+        path: 'test-change-detection',
         component: Page2Component
       },
       {
-        path: 'page3',
+        path: 'test-form',
         component: Page3Component,
       },
     ],
