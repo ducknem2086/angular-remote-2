@@ -78,3 +78,35 @@
 - throttle: trong bao nhiêu giây thì chỉ có 1 request được thực hiện -> đùng cho scroll 
 
 # DomSanitizer : truust thtml (like youtube embeded frame)
+
+# @defer on 
+
+- idle: triggers deferred loading once the browser has reached an idle state (detected using requestIdleCallback API) – so as soon as the browser doesn’t have any heavy lifting task. This is the default behavior.
+
+- immediate: fetches the chunk right away during template execution.
+
+- interaction: triggers the deferred block when user interacts with the element through the click or keydown event
+
+- hover: triggers when the user hovers over an element, using the mouseenter and focusin browser events under the hood.
+
+- viewport: triggers when element is visible on viewport – behind the scenes Angular uses the Intersection Observer API
+
+timer triggers element’s fetch and display after specified amount of time
+
+# service worker : 
+
+Nói tóm lại service worker có các điểm sau:
+- Nó là một file javascript không can thiệp trực tiếp và DOM của website, thay vào đó nó giao tiếp với các page thông quả một giao diện đặc biệt (postMessage), và tương tác với DOM thông qua các page đó.
+
+- SW là proxy mạng có thể lập trình được, tức nó cho phép ta điều khiển cách mà các request được xử lý.
+
+- Nó tắt khi không được dùng đến và sẽ khởi động lại khi cần đến.
+
+- SW sự dụng rộng rãi khái niệm Promises.
+
+- Để cài đặt sw của một trang web, ta cần đăng ký nó bằng javascript của trang web. khi đăng ký sw browser sẽ bắt đầu quá trình đăng ký sw ngầm. Trong bước cài đặt sw nếu muốn ta có thể cache các assets tĩnh, khi việc cache này được hoàn thành nghĩa là sw đã được cài đặt. Nếu các tệp không được cache thành công hoặc không được tải thành công thì sw worker sẽ không cài đặt được và sẽ không active. Sau khi cài đặt thành công sw sẽ bước qua giai đoạn active.
+
+# web worker : 
+-  giao tiếp với nhau thông qua hai hàm chính là postMessage() và onmessage().
+-   Cả main thread và Worker đều nhận thông tin thông qua sự kiện onmessage() và truy cập dự liệu thông qua event.data.
+
